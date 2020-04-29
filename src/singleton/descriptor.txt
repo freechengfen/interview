@@ -1,4 +1,4 @@
-  //单例模式的讲解
+//单例模式的讲解
   1-3 是恶汉模式  线程安全
   4-6 是饱汉模式
 
@@ -17,3 +17,66 @@
    1 传参时  基本数据类型 传的是值   引用数据类型传的是 地址
 
    // 方法区中存放的是 类变量、类加载器、常量等不变的对象
+
+
+//spring的  事物的传播策略(propagada)    一个事物方法 调用另一个事物的方法
+    常用的有 required 、 require_new  默认的是 required
+
+    例如：   本金100   买两本书  一本是50、一本是60买单本书方法是buy
+
+    service(){
+        todo....
+        for(){
+           buy();
+        }
+        todo...
+    }
+    业务层调用buy 方法
+    service和buy方法都是配置了事物
+    buy 方法 传播策略是  required的话  那么只有业务层 事物起了作用   因此一本也买不了
+    buy 方法 传播策略是  require_new的话  那么再调用 buy 方法的时候会挂起 service 的事物，buy方法启用自己的事物
+    每个buy方法都会重新开启自己的事物    因此可以买一本
+
+    事物的隔离级别     解决问题是  脏读  不可重复读  幻读
+    read_uncomiited   read_commit  repeatable_read   serviliazion
+    mysql  默认是 可重复的读
+    oracle 默认是 读已提交
+
+
+//springmvc 中的中文乱码解决
+  post方法  是配置一个 characterencodingfilter   配置一个过滤器
+  get 方法  是在tomcat 中 server.xml 配置 urlEncoding=utf-8
+
+  springmvc 流程
+   servletDispatch  继承与httpservlet  执行的是service（）方法  中间调用service 方法之类的
+     之后调用的是 dodispatch 方法
+     getHandler
+
+  。。。
+
+//git
+
+//jvm
+
+//redis 使用场景
+  数据类型   应用场景
+  string    锁定ip   通过incrby
+  hash      存储用户信息
+  list      实现最新消息的排列   使用push  pop 实现消息队列  电商秒杀
+  set       去重   两个人的共同好友
+  zset      排序  以某个条件为权重来排名
+
+//eleasticsearch
+
+
+//单点登录
+一处登录  多处有效    认证中心认证token
+    用户进入网址    检查是否有token    token 放在cookies 中
+    没有token  则登录并生成token
+    有token
+
+//消息队列
+高并发情况下怎么处理
+弊端
+
+
