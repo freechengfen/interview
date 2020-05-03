@@ -15,7 +15,7 @@
     为什么使用cas 而不是用synchronize  synchronize是每个线程线性执行   cas多个线程并行执行 因此cas性能并发性好点
     cas的缺点   1.有可能自旋次数很多导致cpu开销很大  2.只能保证一个共享变量的原子操作 3.ABA问题
 
-    ABA 问题的解决  使用 atomicReference
+    ABA 问题的解决  使用 atomicstampReference
   4.集合类不安全问题
     concurrentmodificationException 并发修改异常
     解决方法
@@ -40,3 +40,5 @@
     7.自旋锁
         理解： 尝试获取锁的线程不会阻塞，而是采取循环的方式获取锁
         写个自旋锁  SelfSpinLock
+    8.独占锁(写锁)、共享锁(读锁)，互斥锁
+        读读共存  读写不能共存  写写不能共存
