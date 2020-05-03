@@ -16,5 +16,27 @@
     cas的缺点   1.有可能自旋次数很多导致cpu开销很大  2.只能保证一个共享变量的原子操作 3.ABA问题
 
     ABA 问题的解决  使用 atomicReference
+  4.集合类不安全问题
+    concurrentmodificationException 并发修改异常
+    解决方法
+      1.可以使用collerctions.synchronize 方法
+      2.copyOnwriteArrayList  写时复制
+        CopyOnWriteArraySet 本质还是 copyOnwriteArrayList
+        hashset 底层是 hashmap 使用map中的key 存放值 ，value存放的是一个常量
+      3.hashmap 使用  concurrenthashmap
 
+    5.公平锁/非公平锁
+        简介：公平锁 按照请求的顺序来获取锁
+              非公平锁  没有按照请求的顺序来获取锁
+        reetranLock/synchronize 是非公平锁，如果获取失败  则采用公平锁  效率要高点
+    6.可重入锁(递归锁)  reetranlock/synchronize  都是可重入锁
 
+     public syn methoda(){
+        methodb()
+     }e
+      public syn methodb(){
+            system.println.out("adfadf")
+      }
+    7.自旋锁
+        理解： 尝试获取锁的线程不会阻塞，而是采取循环的方式获取锁
+        写个自旋锁  SelfSpinLock
