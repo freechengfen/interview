@@ -1,6 +1,20 @@
-  volatile
+  1.volatile
    简介：轻量级的同步机制
-    特点 ：可见性   不保证原子性  禁止指令重排
+    特点 ：可见性   不保证原子性  禁止指令重排(多线程情况下 编译器会有指令重排)
 
-  JMM (java merory model)   java 内存模型
+  2.JMM (java merory model)   java 内存模型
    每个线程从主线程中取出变量的副本放在本线程中使用  使用完毕写会主内存
+
+
+  3.atiomicInteger  为什么可以实现原子性   其原理是cas
+    CAS  CompareAndSet   比较并设置
+    例如 atomicInteger.getAndIncrement 方法是调用unsafe类中的方法，unsafe 方法又是调用navive方法
+        其依靠的是底层资源来调用的   可以从unsafe 源码(rt.jar 中sun.misc包)中看到 其采用自旋方式比较
+        其中value 值时由volatile 修饰的  因此其他线程修改后可以看见修改后的值
+        期望值是否相等 相等则获得值
+    为什么使用cas 而不是用synchronize  synchronize是每个线程线性执行   cas多个线程并行执行 因此cas性能并发性好点
+    cas的缺点   1.有可能自旋次数很多导致cpu开销很大  2.只能保证一个共享变量的原子操作 3.ABA问题
+
+    ABA 问题的解决  使用 atomicReference
+
+
