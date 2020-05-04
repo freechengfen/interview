@@ -9,7 +9,7 @@ package volatileDescriptor;/*
 
 public class VolatileSingleton {
 
-    private   VolatileSingleton Instance ;
+    private  volatile VolatileSingleton Instance ;
 
     private VolatileSingleton (){
         System.out.println("创建单例模式");

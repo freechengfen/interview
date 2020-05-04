@@ -41,4 +41,6 @@
         理解： 尝试获取锁的线程不会阻塞，而是采取循环的方式获取锁
         写个自旋锁  SelfSpinLock
     8.独占锁(写锁)、共享锁(读锁)，互斥锁
-        读读共存  读写不能共存  写写不能共存
+        读读共存  读写不能共存  写写不能共存  reetranwritereadlock
+
+    countdownLatchDemo/cyclicBarrier/semaphore
