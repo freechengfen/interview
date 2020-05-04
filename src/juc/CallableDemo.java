@@ -26,6 +26,7 @@ class MyThread implements Callable<Integer>{
 public class CallableDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+
         FutureTask<Integer> integerFutureTask = new FutureTask<Integer>(new MyThread());
         new Thread(integerFutureTask).start();
 
@@ -35,6 +36,7 @@ public class CallableDemo {
         Integer integer = integerFutureTask.get();
         System.out.println("+++++++++++++++++++++++");
         System.out.println(10+integer);
+
     }
 
 
