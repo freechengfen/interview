@@ -1,4 +1,4 @@
-package volatileDescriptor;/*
+package juc;/*
 @author : Administrator
 @create : 2020-05-2020/5/4-15:11
 
@@ -21,7 +21,7 @@ public class CountDownLatchDemo {
              new Thread(()->{
                  System.out.println(Thread.currentThread().getName()+"被灭");
                  count.countDown();
-             },EnumDemo.foreach(i).getName()).start();
+             }, EnumDemo.foreach(i).getName()).start();
          }
          try {
              count.await();

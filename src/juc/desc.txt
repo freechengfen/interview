@@ -1,0 +1,7 @@
+1.countdownLatchDemo/cyclicBarrier/semaphore
+
+2.阻塞队列(当阻塞队列是空的时候，那么获取队列中元素的操作将会被阻塞；当阻塞队列是满的时候，那么往队列中添加元素的操作将会被阻塞；)
+    blockingqueue  好处是程序员不用去管  什么时候阻塞 什么时候唤醒
+        arrayblockingqueue   数组结构组成的有界阻塞队列
+        linkedBlockingqueue  链表结构组成的有界(大小默认值时Integer.MAX_VALUE)阻塞队列
+        synchronousqueue     不存储元素的阻塞队列，单个元素的队列
