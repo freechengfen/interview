@@ -29,4 +29,12 @@
  5.线程池
     减低资源消耗
     线程池的底层就是 ThreadPoolExecutor
-    Executors.newFixedThreadPool
+    Executors.newFixedThreadPool、Executors.newSingleThreadExecutor、Executors.newCachedThreadPool
+    ThreadPoolExecutor
+      1.corePoolSize        核心线程数
+      2.maximumPoolSize     容纳的最大想吃数
+      3.keepAliveTime       多余线程存活时间
+      4.TiimeUnit           3的单位
+      5.BlockingQueue       任务队列 被提交但为执行的任务
+      6.threadFactory       生成线程的线程工厂
+      7.handle              拒绝策略

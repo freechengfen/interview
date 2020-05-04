@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 public class ThreadPool {
 
     public static void main(String[] args) {
-//        ExecutorService executorService = Executors.newFixedThreadPool(5); //创建5个线程的池
+//        ExecutorService executorService = Executors.newFixedThreadPool(5); //创建5个线程的池  长期固定的任务
 //        ExecutorService executorService = Executors.newSingleThreadExecutor(); //创建单个线程的池
         ExecutorService executorService = Executors.newCachedThreadPool(); //创建弹性个线程的池
 
