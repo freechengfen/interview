@@ -28,5 +28,5 @@
         Runtime.getRuntime().availableProcessors() 计算计算机核数
  5.线程池
     减低资源消耗
-    线程池的底层就是 ThreadPoolExecutors
+    线程池的底层就是 ThreadPoolExecutor
     Executors.newFixedThreadPool
