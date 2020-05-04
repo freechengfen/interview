@@ -5,3 +5,22 @@
         arrayblockingqueue   数组结构组成的有界阻塞队列
         linkedBlockingqueue  链表结构组成的有界(大小默认值时Integer.MAX_VALUE)阻塞队列
         synchronousqueue     不存储元素的阻塞队列，单个元素的队列
+         抛出异常   add             remove        element
+         特殊值     offer(false)    poll(null)    peek
+         阻塞       put(阻塞)    take(阻塞)       不可用
+         超时       offer(e.time,unit)  poll(time,unit)  不可用
+
+ 3.synchronize 虚假唤醒   lock 的condition   synchrousqueue  多线程的判断使用while
+    sync  -> lock
+    wait  -> await
+    notify ->signal
+    synchronize 和lock 有什么区别
+        1.synchronize关键字是jvm层面底层是monitor 保证不会死锁 不需要用户手动释放
+    lock类
+        1.可以中断使用lockInterruptibly方法
+        2.默认是非公平锁，可以转换为公平锁
+        3.创建多个condition
+ 4.创建多线程方法  实现runnable\ callable
+        futureTask 是runnable的实现类  callable又在futureTask中
+        callable 相比较runnable而言， 可以获得另一个线程的结果   然后在跟主线程的结果进行合并,对于cpu更加的友好
+        futureTask.get方法是一个阻塞方法 直到线程结果出来才会得到 ，因此 futureTask.get 方法一般都放在代码后面
