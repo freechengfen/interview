@@ -25,7 +25,6 @@
         callable 相比较runnable而言， 可以获得另一个线程的结果   然后在跟主线程的结果进行合并,对于cpu更加的友好
         futureTask.get方法是一个阻塞方法 直到线程结果出来才会得到 ，因此 futureTask.get 方法一般都放在代码后面
 
-        Runtime.getRuntime().availableProcessors() 计算计算机核数
  5.线程池
     减低资源消耗
     线程池的底层就是 ThreadPoolExecutor
@@ -51,3 +50,14 @@
         2.CallerRunsPolicy      调用者策略   如果线程池不够用 使用调用者的线程继续完成
         3.DiscardOldestPolicy   抛弃等待时间最长的任务
         4.DiscardPolicy         直接丢弃任务
+      注意：
+      1.在生产环境时，不使用Executors创建线程池，因为其内部阻塞队列时使用LinkedBlockingQueue 其边界为 Integer.MAX_NUM
+        有可能导致阻塞  Integer.MAX_NUM条任务  因此不合适
+        实际生成中直接时候用ThreadPoolExecutor类
+       2.合理配置线程池
+           Runtime.getRuntime().availableProcessors() 计算计算机核数
+           cpu密集型  核数+1   以免线程的切换
+           io 密集型 (经常查数据库)  核数*2    核数/(1-0.8/0.9)
+ 6.死锁
+    jps 看java 运行的进程   类似于   ps -ef
+    jstack 进程号 查看问题
