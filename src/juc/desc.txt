@@ -34,7 +34,20 @@
       1.corePoolSize        核心线程数
       2.maximumPoolSize     容纳的最大想吃数
       3.keepAliveTime       多余线程存活时间
-      4.TiimeUnit           3的单位
+      4.TimeUnit            3的单位
       5.BlockingQueue       任务队列 被提交但为执行的任务
-      6.threadFactory       生成线程的线程工厂
+      6.threadFactory       生成线程的线程工厂  默认
       7.handle              拒绝策略
+
+     执行execute方法时 相当于添加用户执行，
+        1.首先由 corePoolSize 去处理用户请求 如果corePoolSize-
+        2.小于正在运行的线程那么会先将任务放入阻塞队列(blockingQueue)中，为止
+        3.如果阻塞队列已放满，但是还是不能满足任务的执行，那么会开启最大的线程数(maximumPoolSize)来执行
+        4，如果使用最大线程(maximumPoolSize)还是不能满足那么就会有拒绝策略(handle)来执行
+
+          另： keepAliveTime是指  不需要corePoolSize以外的队列时，corePoolSize自己就可以搞定时。其他线程存活的时间
+     handle
+        1.abortPolicy           直接抛出异常
+        2.CallerRunsPolicy      调用者策略   如果线程池不够用 使用调用者的线程继续完成
+        3.DiscardOldestPolicy   抛弃等待时间最长的任务
+        4.DiscardPolicy         直接丢弃任务
