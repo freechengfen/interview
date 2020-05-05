@@ -1,4 +1,4 @@
-package singleton;/*
+package jvm;/*
 @author : Administrator
 @create : 2020-05-2020/5/1-19:49
 
