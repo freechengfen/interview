@@ -95,7 +95,7 @@
 
         (4)方法区(逻辑上是堆的一部分  其实不是)：
               class   classLoader 常量池
-              方法区的实现  1.8以前 永久代 1.8 元空间
+              方法区的实现  1.8以前 永久代 1.8 元空间 元空间使用本机物理内存
               查看字节码
               javap -v .class
               StringTable  是在运行时常量池中 存储的是指向String对象的索引，真实对象还是存储在堆中。
@@ -109,6 +109,13 @@
                           1.该类的所有对象都已经被清除
                           2.加载该类的 ClassLoader 已经被回收
                           3.该类的 java.lang.Class 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。
+              堆内存调优：
+                -Xms   设置初始分配大小，默认为物理内存的 1/64
+                -Xmx   最大分配内存，默认为物理内存的 1/4
+                -XX:+PrintGCdETAILS   输出详细gc日志
 
+                在生产时   -Xms -Xmx要配置相等，以免内存有波动
+                类别     young    yong区 gc的变化 yong区总大小       堆gc 变化大小  堆区大小               消耗时间
+                GC       [PSYoungGen:  0K->0K(3584K)]                6893K->6893K(11776K), 0.0006941 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
     3.执行引擎
         interpreter 解释器   jitCompiler 即时编译器 Gc 垃圾回收
