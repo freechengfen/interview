@@ -6,21 +6,25 @@ jvm 堆内存  Runtime.getRuntime().maxMemory()/Runtime.getRuntime().totalMemory
 vm Option :-Xms512m  -Xmx512m  -XX:+PrintGCDetails
 */
 
+import sun.misc.VM;
+
 import java.util.Random;
 import java.util.UUID;
 
 public class JvmParameter {
 
     public static void main(String[] args) {
-        heaperror();
+        showParameter();
 
 
     }
 
 
+
      static  void showParameter(){
          long maxMemory = Runtime.getRuntime().maxMemory();
          long totalMemory = Runtime.getRuntime().totalMemory();
+         System.out.println(VM.maxDirectMemory() / 1024 / 1024 + "MB");  //堆外内存
          System.out.println("MB "+maxMemory/1024/1024);
          System.out.println("MB "+totalMemory/1024/1024);
     }

@@ -1,0 +1,7 @@
+  常见性能命令
+       整机： top
+       cpu:  vmstat
+       内存：free
+       硬盘: df
+       磁盘: iostat
+       网络io: ifstat
