@@ -7,8 +7,10 @@ package jvm;/*
 import java.lang.ref.WeakReference;
 
 public class WeakReferDemo {
-
-    //内存足够的软引用
+    public static void main(String[] args) {
+        memory_enough_weakRefe();
+    }
+    //内存足够的弱引用
     static void memory_enough_weakRefe(){
 
         Object o1 = new Object();
@@ -18,11 +20,11 @@ public class WeakReferDemo {
         o1=null;
         System.gc();
         System.out.println("GC后=======================");
-        System.out.println(weakReference.get());  //有值
+        System.out.println(weakReference.get());  //无值
 
     }
 
-    //-Xms5m Xmx5m -XX:+PrintGCDetails
+    //内存足够的弱引用
     static void menory_lock_weakRefe(){
 
         Object o1=new Object();
@@ -39,8 +41,6 @@ public class WeakReferDemo {
             System.out.println(o1);
             System.out.println(weakReference.get());  //无值
         }
-
-
 
 
     }
