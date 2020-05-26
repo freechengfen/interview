@@ -1,6 +1,6 @@
 ##redisLock
-    以下写的是伪代码   主要业务是 stock-1
-    ```
+     以下写的是伪代码   主要业务是 stock-1
+     ```
      @requestMapping("/reduceProduct")
         public void reduceProduct(){
          String  clientid= UUID.randomUUID();
@@ -22,6 +22,8 @@
                     jedis.delete("lockkey");        //释放锁可以使用lua脚本来释放
                 }
             }
-    ```
+     ```
         redis 分布式锁有一个问题，就是当分布式锁的k-v 还没传到 slave 时 master 结点就宕机了。锁就又失效了
-        这时 就是zookeeper 分布式锁解决，
+        这时 就是zookeeper 分布式锁解决，zookeeper 分布式锁，创建有序结点，看自己的结点是不是最小的结点，是
+        最小的结点那么就获取锁，释放锁的时候就删除此临时结点。不是最小的结点那么就监听比自己次小结点的变化，
+        判断是不是
