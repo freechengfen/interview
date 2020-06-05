@@ -17,8 +17,11 @@ class dd implements SomeInterface {
     public void add() {
         System.out.println(a);
     }
+    
+    
 
     public static void main(String[] args) {
+        new char
         SomeInterface d = new dd();
         d.add();
     }
