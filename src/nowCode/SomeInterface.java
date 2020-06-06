@@ -21,7 +21,8 @@ class dd implements SomeInterface {
     
 
     public static void main(String[] args) {
-        new char
+//        int i = new int;    new int 是不行的  new char 是允许的
+//        char c = new char;
         SomeInterface d = new dd();
         d.add();
     }
