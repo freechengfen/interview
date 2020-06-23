@@ -20,6 +20,7 @@ public class MainDemo {
         for (String beanDefinitionName : beanDefinitionNames) {
             System.out.println(beanDefinitionName);
         }
+        System.out.println(applicationContext.getBean("getMyfactory").getClass());
 //        Map<String, Person> beansOfType = applicationContext.getBeansOfType(Person.class);
 //        System.out.println(bean);
     }

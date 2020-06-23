@@ -7,7 +7,9 @@ package main.config;/*
         (1)conditional 按照 条件给ioc中注入组件
         (2)includeFilter
     3.@import 导入组件
-    4.@import
+    4.@import 实现ImportSelector 接口 注入bean  注入的是类名数组
+    5.@import 通过实现ImportBeanDefinitionRegistrar 接口注入bean
+    6.使用factoryBean 注入bean
 */
 
 import main.entity.Blue;
@@ -18,7 +20,7 @@ import java.util.LinkedList;
 
 @Configuration
 @ComponentScan(value = "main",includeFilters = {@ComponentScan.Filter(type=FilterType.CUSTOM,classes = {Myfilter.class})})
-@Import({Blue.class,MyImport.class})
+@Import({Blue.class,MyImport.class,MyBeanDeifinitonRegistion.class})
 public class SpringConfig {
 
 //    @Scope
@@ -39,6 +41,11 @@ public class SpringConfig {
     @Bean("linux")
     public Person person2(){
         return  new Person(3,"linux");
+    }
+
+    @Bean
+    public MyFactoryBean getMyfactory(){
+        return new MyFactoryBean();
     }
 
 }
